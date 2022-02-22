@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-
-
 
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
@@ -19,80 +16,62 @@
         }
     </style>
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-    
+
 </head>
 <body onload="isMobile()">
     <h1>hola</h1>
 
     <script>
-    function isMobile(){
-        let isMobileDevice = window.matchMedia("only screen and (max-width: 760px)").matches;
-        if(isMobileDevice){
-        // The viewport is less than 768 pixels wide
-        alert("This is a mobile device.");
-        } else{
-        //The viewport is greater than 700 pixels wide
-        
-
-
-    var initESW = function(gslbBaseURL) {
-        embedded_svc.settings.displayHelpButton = true; //Or false
-        embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-        //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-        //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-        //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-        // Settings for Chat
-        //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-            // Returns a valid button ID.
-        //};
-        //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-        //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-        //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-        embedded_svc.settings.entryFeature = 'LiveAgent';
-        embedded_svc.init(
-            'https://elpalaciodehierro.my.salesforce.com',
-            'https://elpalaciodehierro.secure.force.com/asistenciaEventos',
-            gslbBaseURL,
-            '00Df2000001A3su',
-            'Servicio_a_Cliente_eComm',
-            {
-                baseLiveAgentContentURL: 'https://c.la1-c2-ia5.salesforceliveagent.com/content',
-                deploymentId: '5725w000000UcPM',
-                buttonId: '5735w000000UdrM',
-                baseLiveAgentURL: 'https://d.la1-c2-ia5.salesforceliveagent.com/chat',
-                eswLiveAgentDevName: 'Servicio_a_Cliente_eComm',
-                isOfflineSupportEnabled: false
+        function isMobile(){
+            let isMobileDevice = window.matchMedia("only screen and (max-width: 760px)").matches;
+            if(isMobileDevice){
+            // The viewport is less than 768 pixels wide
+            alert("This is a mobile device.");
+            } else{
+            //The viewport is greater than 700 pixels wide
+            var initESW = function(gslbBaseURL) {
+                embedded_svc.settings.displayHelpButton = true; //Or false
+                embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+                //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+                //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+                //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+                //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+                // Settings for Chat
+                //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+                    // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+                    // Returns a valid button ID.
+                //};
+                //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+                //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+                //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+                embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+                embedded_svc.settings.entryFeature = 'LiveAgent';
+                embedded_svc.init(
+                    'https://elpalaciodehierro.my.salesforce.com',
+                    'https://elpalaciodehierro.secure.force.com/asistenciaEventos',
+                    gslbBaseURL,
+                    '00Df2000001A3su',
+                    'Servicio_a_Cliente_eComm',
+                    {
+                        baseLiveAgentContentURL: 'https://c.la1-c2-ia5.salesforceliveagent.com/content',
+                        deploymentId: '5725w000000UcPM',
+                        buttonId: '5735w000000UdrM',
+                        baseLiveAgentURL: 'https://d.la1-c2-ia5.salesforceliveagent.com/chat',
+                        eswLiveAgentDevName: 'Servicio_a_Cliente_eComm',
+                        isOfflineSupportEnabled: false
+                    }
+                );
+            };
+            if (!window.embedded_svc) {
+                var s = document.createElement('script');
+                s.setAttribute('src', 'https://elpalaciodehierro.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+                s.onload = function() {
+                    initESW(null);
+                };
+                document.body.appendChild(s);
+            } else {
+                initESW('https://service.force.com');
             }
-        );
-    };
-    if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://elpalaciodehierro.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
-            initESW(null);
-        };
-        document.body.appendChild(s);
-    } else {
-        initESW('https://service.force.com');
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     };
     </script>
